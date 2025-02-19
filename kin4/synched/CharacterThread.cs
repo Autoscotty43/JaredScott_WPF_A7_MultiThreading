@@ -12,6 +12,7 @@ namespace kin4.synched
         private Data _data;
         private string _character;
         private Colors _color;
+        private object _lock = new object();
 
         public CharacterThread(Data data, string character, Colors color)
         {
@@ -24,7 +25,10 @@ namespace kin4.synched
         {
             while (true)
             {
-                _data.SetFavorite(_character, _color);
+                lock (_lock)
+                {
+                    _data.SetFavorite(_character, _color);
+                }
             }
         }
     }

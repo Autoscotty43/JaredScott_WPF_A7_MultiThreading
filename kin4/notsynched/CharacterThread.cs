@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
@@ -9,9 +12,10 @@ namespace kin4.notsynched
 {
     public class CharacterThread
     {
-        private Data _data;
-        private string _character;
-        private Colors _color;
+        private readonly Data _data;
+        private readonly string _character;
+        private readonly Colors _color;
+        private static readonly object _lock = new object();
 
         public CharacterThread(Data data, string character, Colors color)
         {
@@ -24,7 +28,10 @@ namespace kin4.notsynched
         {
             while (true)
             {
-                _data.SetFavorite(_character, _color);
+                lock (_lock)
+                {
+                    _data.SetFavorite(_character, _color);
+                }
             }
         }
     }
