@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace kin4.notsynched
@@ -20,7 +16,17 @@ namespace kin4.notsynched
 
         public void SetFavorite(string character, Colors color)
         {
+
+            // Detect mismatch
+            if ((FavoriteCharacter != character && FavoriteColor == color) ||
+                (FavoriteCharacter == character && FavoriteColor != color))
+            {
+                Console.WriteLine($"MISMATCH! Dorthy's favorite: {character}, Color: {color}");
+            }
+
+            Thread.Sleep(new Random().Next(100, 300));
             FavoriteCharacter = character;
+            Thread.Sleep(new Random().Next(100, 300));
             FavoriteColor = color;
         }
 

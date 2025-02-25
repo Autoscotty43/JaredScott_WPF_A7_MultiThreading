@@ -1,13 +1,6 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace kin4.notsynched
 {
@@ -28,9 +21,15 @@ namespace kin4.notsynched
             foreach (var thread in threads)
                 thread.Start();
 
+            List<string> outputLog = new List<string>();
+
             while (true)
             {
-                outputBox.Dispatcher.Invoke(() => outputBox.Text = data.ToString());
+                string output = data.ToString();
+                outputLog.Add(output);
+                if (outputLog.Count > 10) outputLog.RemoveAt(0); // Keep last 10 logs
+
+                outputBox.Dispatcher.Invoke(() => outputBox.Text = string.Join("\n", outputLog));
                 Thread.Sleep(100);
             }
         }

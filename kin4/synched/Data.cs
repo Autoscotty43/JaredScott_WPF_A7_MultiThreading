@@ -21,6 +21,7 @@ namespace kin4.synched
 
         public void SetFavorite(string character, Colors color)
         {
+            Thread.Sleep(200); // Sleep Thread Added
             FavoriteCharacter = character;
             FavoriteColor = color;
         }

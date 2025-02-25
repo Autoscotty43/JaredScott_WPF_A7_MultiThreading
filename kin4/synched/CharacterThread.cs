@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Threading;
 
 namespace kin4.synched
@@ -25,9 +21,10 @@ namespace kin4.synched
         {
             while (true)
             {
-                lock (_lock)
+                lock (_lock)  // Synchronization remains
                 {
                     _data.SetFavorite(_character, _color);
+                    Thread.Sleep(1500);  // Introduce sleep
                 }
             }
         }
