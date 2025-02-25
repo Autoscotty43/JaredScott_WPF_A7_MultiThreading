@@ -15,12 +15,12 @@ The application simulates a scenario where multiple threads attempt to update th
 
 ### Non-Synchronized Mode
 
-![Non-Synchronized Mode](path/to/your/image.png)  
+![Screenshot 2025-02-25 174236](https://github.com/user-attachments/assets/c14492be-61df-4a40-94cf-49284797e832)
 *This screenshot shows the output in non-synchronized mode, where occasional mismatches occur in the character's favorite and their color.*
 
 ### Synchronized Mode
 
-![Synchronized Mode](path/to/your/image.png)  
+![Screenshot 2025-02-25 174329](https://github.com/user-attachments/assets/ce834c24-21d1-4318-9053-fc7eccc5c7dd)
 *This screenshot shows the output in synchronized mode, where the data is consistently correct due to the use of locks.*
 
 ## Installation
@@ -55,12 +55,5 @@ In the non-synchronized version, multiple threads update the same shared `Data` 
 
 The synchronized version uses the `lock` keyword to ensure that only one thread can update the shared `Data` object at a time. This eliminates race conditions, ensuring that the data remains consistent. Each thread waits for the lock to be released before performing updates, preventing concurrent modifications.
 
-## ScreenShots
-
-### Synced 
-![Screenshot 2025-02-25 174329](https://github.com/user-attachments/assets/ce834c24-21d1-4318-9053-fc7eccc5c7dd)
-
-### Non-Synced
-![Screenshot 2025-02-25 174236](https://github.com/user-attachments/assets/c14492be-61df-4a40-94cf-49284797e832)
 
 
